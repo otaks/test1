@@ -20,7 +20,7 @@ jobs:
           command: |
             docker build -t go-web-server .
 
-            TAG=gcr.io/otaks-deployflow/go-web-server:pushed-'date %Y%m%d%H%M%S'
+            TAG=gcr.io/otaks-deployflow/go-web-server:pushed
             docker tag go-web-server $TAG
             docker push $TAG
             
