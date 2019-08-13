@@ -19,7 +19,7 @@ jobs:
           name: Push docker image
           command: |
             docker build -t go-web-server .
-            TAG=gcr.io/otaks-deployflow/go-web-server:pushed- 'date +%Y%m%d%H%M%S'
+            TAG=gcr.io/otaks-deployflow/go-web-server:pushed-'date +%Y%m%d%H%M%S'
             docker tag go-web-server $TAG
             docker push $TAG
             LATEST_TAG=gcr.io/otaks-deployflow/go-web-server:latest
