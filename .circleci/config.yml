@@ -11,18 +11,18 @@ jobs:
       - run:
         name: Setup CLOUD SDK
         command: |
-        echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-        gcloud --quiet config set project otaks-deployflow
-        gcloud --quiet config set compute/zone asia-east1-b
-        gcloud --quiet auth configure-docker
+          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project otaks-deployflow
+          gcloud --quiet config set compute/zone asia-east1-b
+          gcloud --quiet auth configure-docker
       - run:
         name: Push docker image
         command: |
-        docker build -t go-web-server .
-        TAG=gcr.io/otaks-deployflow/go-web-server:pushed- 'date +%Y%m%d%H%M%S'
-        docker tag go-web-server $TAG
-        docker push $TAG
-        LATEST_TAG=gcr.io/otaks-deployflow/go-web-server:latest
-        docker tag go-web-server $LATEST_TAG
-        docker push $LATEST_TAG
+          docker build -t go-web-server .
+          TAG=gcr.io/otaks-deployflow/go-web-server:pushed- 'date +%Y%m%d%H%M%S'
+          docker tag go-web-server $TAG
+          docker push $TAG
+          LATEST_TAG=gcr.io/otaks-deployflow/go-web-server:latest
+          docker tag go-web-server $LATEST_TAG
+          docker push $LATEST_TAG
 
